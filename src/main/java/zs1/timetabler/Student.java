@@ -48,4 +48,8 @@ public class Student {
     public void setYear(int year) {
         this.year = year;
     }
+
+    @Override public String toString() {
+        return getFirst_name() + " " + getSurname() + " | Year Group: " + getYear();
+    }
 }

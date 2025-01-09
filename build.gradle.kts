@@ -10,22 +10,10 @@ plugins {
 group = "zs1.timetabler"
 version = "1.0-SNAPSHOT"
 
-//apply(plugin = 'docker-compose')
-//apply plugin: 'docker-compose'
-
-//dockerCompose.isRequiredBy(this.tasks.run)
-//dockerCompose.isRequiredBy(this.tasks.test)
-
 apply(plugin = "docker-compose")
-configure<ComposeExtension> {
-    includeDependencies.set(true)
-    createNested("local").apply {
-        setProjectName("timetabler")
-        environment.putAll(mapOf("TAGS" to "feature-test,local"))
-        startedServices.set(listOf("foo-api", "foo-integration"))
-        upAdditionalArgs.set(listOf("--no-deps"))
-    }
-}
+
+dockerCompose.isRequiredBy(project.tasks.run)
+dockerCompose.isRequiredBy(project.tasks.test)
 
 repositories {
     mavenCentral()
@@ -40,7 +28,9 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     implementation("org.postgresql:postgresql:42.6.0")
-    implementation("org.hibernate.orm:hibernate-core:6.6.3.Final")
+    implementation("org.hibernate.orm:hibernate-core:6.6.3.Final") {
+        exclude("org.jboss.logging", "jboss-logging")
+    }
     implementation("jakarta.transaction:jakarta.transaction-api:2.0.1")
     implementation("jakarta.enterprise:jakarta.enterprise.cdi-api:4.1.0")
     implementation("org.jboss.logging:jboss-logging:3.4.1.Final")

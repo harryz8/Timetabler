@@ -81,4 +81,8 @@ public class Class {
     public Time getStartTime() {
         return startTime;
     }
+
+    @Override public String toString() {
+        return getName()+" Day: "+getDay()+" Start time: "+getStartTime();
+    }
 }

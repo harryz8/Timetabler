@@ -15,6 +15,7 @@ module zs1.timetabler {
     requires org.hibernate.commons.annotations;
     requires org.postgresql.jdbc;
     requires net.bytebuddy;
+    requires java.desktop;
 
     opens zs1.timetabler to javafx.fxml, org.hibernate.orm.core;
     exports zs1.timetabler;

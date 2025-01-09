@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="zs1.timetabler.AddClassController"
+      prefHeight="400.0" prefWidth="600.0">
+    <Label styleClass="Title" text="Add a Class" />
+    <Label text="Enter the name of the new class: " />
+    <TextField fx:id="className" />
+    <Label text="Choose the teacher for the new class: " />
+    <ChoiceBox fx:id="teacherChoice" />
+    <Label text="Choose the day of the week that this class is on: " />
+    <ChoiceBox fx:id="daysOfTheWeek" />
+    <Label text="Choose the start time for this class: " />
+    <HBox alignment="CENTER">
+        <ChoiceBox fx:id="hoursInDayStart" />
+        <Label text=" : " />
+        <ChoiceBox fx:id="minsInHourStart" />
+    </HBox>
+    <Label text="Choose the end time for this class: " />
+    <HBox alignment="CENTER">
+        <ChoiceBox fx:id="hoursInDayEnd" />
+        <Label text=" : " />
+        <ChoiceBox fx:id="minsInHourEnd" />
+    </HBox>
+    <HBox alignment="BOTTOM_RIGHT">
+        <Button text="Cancel" onMouseClicked="#cancel" />
+        <Button text="Submit" onMouseClicked="#submit" />
+    </HBox>
+</VBox>
