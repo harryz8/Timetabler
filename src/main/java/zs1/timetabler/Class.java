@@ -83,6 +83,10 @@ public class Class {
     }
 
     @Override public String toString() {
-        return getName()+" Day: "+getDay()+" Start time: "+getStartTime();
+        String teacher = "null";
+        if (getTeacher() != null) {
+            teacher = getTeacher().toString();
+        }
+        return getName()+" Day: "+getDay()+" Start time: "+getStartTime()+" Teacher: "+teacher;
     }
 }

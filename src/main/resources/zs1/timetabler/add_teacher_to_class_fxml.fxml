@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="zs1.timetabler.AddTeacherToClassController"
+            prefHeight="400.0" prefWidth="600.0">
+    <Label styleClass="Title" text="Change the Teacher assigned to a Class" />
+    <Label text="Choose the teacher: " />
+    <ChoiceBox fx:id="teacherChoice" />
+    <Label text="Choose the class: " />
+    <ChoiceBox fx:id="classChoice" />
+    <HBox alignment="BOTTOM_RIGHT">
+        <Button text="Cancel" onMouseClicked="#cancel" />
+        <Button text="Submit" onMouseClicked="#submit" />
+    </HBox>
+</VBox>

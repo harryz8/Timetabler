@@ -17,9 +17,12 @@
                 <MenuItem text="Teacher" onAction="#addTeacher" />
                 <MenuItem text="Class" onAction="#addClass" />
                 <MenuItem text="Add Student to a Class" onAction="#addStudentToClass" />
+                <MenuItem text="Change the Teacher assigned to a Class" onAction="#addTeacherToClass" />
             </Menu>
             <Menu text="View">
                 <MenuItem text="Students" onAction="#viewStudents" />
+                <MenuItem text="Teachers" onAction="#viewTeachers" />
+                <MenuItem text="Classes" onAction="#viewClasses" />
             </Menu>
         </MenuBar>
     </top>

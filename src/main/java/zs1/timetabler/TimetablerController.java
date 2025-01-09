@@ -149,4 +149,31 @@ public class TimetablerController {
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML public void viewTeachers() throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("view_teachers_fxml.fxml"));
+        Scene scene = new Scene(root, 500, 275);
+        Stage stage = new Stage();
+        stage.setTitle("Teachers");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML public void viewClasses() throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("view_class_fxml.fxml"));
+        Scene scene = new Scene(root, 500, 275);
+        Stage stage = new Stage();
+        stage.setTitle("Classes");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML public void addTeacherToClass() throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("add_teacher_to_class_fxml.fxml"));
+        Scene scene = new Scene(root, 500, 275);
+        Stage stage = new Stage();
+        stage.setTitle("Change the Teacher assigned to a Class");
+        stage.setScene(scene);
+        stage.show();
+    }
 }
