@@ -6,22 +6,40 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane xmlns="http://javafx.com/javafx"
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="zs1.timetabler.TimetablerController"
-            prefHeight="400.0" prefWidth="600.0">
-    <MenuBar GridPane.rowIndex="0" GridPane.columnIndex="0">
-        <Menu text="Add">
-            <MenuItem text="Student" onAction="#addStudent" />
-            <MenuItem text="Teacher" onAction="#addTeacher" />
-            <MenuItem text="Class" onAction="#addClass" />
-            <MenuItem text="Add Student to a Class" onAction="#addStudentToClass" />
-        </Menu>
-    </MenuBar>
-    <Label text="Enter a student's full name: " GridPane.rowIndex="1" GridPane.columnIndex="0" />
-    <TextField fx:id="studentName" GridPane.rowIndex="2" GridPane.columnIndex="0" />
-    <Button text="Search" onAction="#findStudent" GridPane.rowIndex="3" GridPane.columnIndex="0" />
-    <GridPane fx:id="holder" GridPane.rowIndex="4" GridPane.columnIndex="0">
+            fx:id="primaryPane">
+    <top>
+        <MenuBar>
+            <Menu text="Add">
+                <MenuItem text="Student" onAction="#addStudent" />
+                <MenuItem text="Teacher" onAction="#addTeacher" />
+                <MenuItem text="Class" onAction="#addClass" />
+                <MenuItem text="Add Student to a Class" onAction="#addStudentToClass" />
+            </Menu>
+            <Menu text="View">
+                <MenuItem text="Students" onAction="#viewStudents" />
+            </Menu>
+        </MenuBar>
+    </top>
+    <center>
+        <VBox>
+            <HBox>
+                <VBox>
+                <Label text="Choose a student: " />
+                <ChoiceBox fx:id="studentChoice" onAction="#findStudentTimetable" minWidth="250" />
+                </VBox>
+                <Label text="  " />
+                <VBox>
+                <Label text="Choose a teacher: " />
+                <ChoiceBox fx:id="teacherChoice" onAction="#findTeacherTimetable" minWidth="200" />
+                </VBox>
+            </HBox>
+            <!--    <GridPane fx:id="holder" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2" >-->
 
-    </GridPane>
-</GridPane>
+<!--    </GridPane>-->
+            <Label fx:id="holder" id="timetableHolder"/>
+        </VBox>
+    </center>
+</BorderPane>
