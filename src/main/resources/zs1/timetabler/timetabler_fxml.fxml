@@ -17,23 +17,25 @@
                 <MenuItem text="Teacher" onAction="#addTeacher" />
                 <MenuItem text="Class" onAction="#addClass" />
                 <MenuItem text="Add Student to a Class" onAction="#addStudentToClass" />
-                <MenuItem text="Change the Teacher assigned to a Class" onAction="#addTeacherToClass" />
+<!--                <MenuItem text="Change the Teacher assigned to a Class" onAction="#addTeacherToClass" />-->
             </Menu>
             <Menu text="View">
                 <MenuItem text="Students" onAction="#viewStudents" />
                 <MenuItem text="Teachers" onAction="#viewTeachers" />
                 <MenuItem text="Classes" onAction="#viewClasses" />
+                <MenuItem text="Students enrolled in a Class" onAction="#viewStudentsInClass" />
             </Menu>
         </MenuBar>
     </top>
     <center>
         <VBox>
+            <Label styleClass="Title" text="Timetable Generator" />
             <HBox>
                 <VBox>
                 <Label text="Choose a student: " />
                 <ChoiceBox fx:id="studentChoice" onAction="#findStudentTimetable" minWidth="250" />
                 </VBox>
-                <Label text="  " />
+                <Label text=" or " />
                 <VBox>
                 <Label text="Choose a teacher: " />
                 <ChoiceBox fx:id="teacherChoice" onAction="#findTeacherTimetable" minWidth="200" />

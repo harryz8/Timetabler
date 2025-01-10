@@ -40,6 +40,10 @@ public class Teacher {
         this.surname = surname;
     }
 
+    public int getTeacher_id() {
+        return teacher_id;
+    }
+
     @Override public String toString() {
         return getFirst_name() + " " + getSurname();
     }

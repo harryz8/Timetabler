@@ -49,6 +49,10 @@ public class Student {
         this.year = year;
     }
 
+    public int getStudent_id() {
+        return student_id;
+    }
+
     @Override public String toString() {
         return getFirst_name() + " " + getSurname() + " | Year Group: " + getYear();
     }

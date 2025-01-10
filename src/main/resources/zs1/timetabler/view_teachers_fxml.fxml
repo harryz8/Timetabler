@@ -10,8 +10,11 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="zs1.timetabler.ViewTeachersController"
             prefHeight="400.0" prefWidth="600.0">
+    <Label styleClass="Title" text="Teachers" />
     <ListView fx:id="teachersListView" />
     <HBox>
+        <Button onMouseClicked="#refresh" text="Refresh" />
+        <Button onMouseClicked="#modifySelected" text="Modify" disable="true" fx:id="modifyBt" />
         <Button onMouseClicked="#deleteSelected" text="Delete" disable="true" fx:id="deleteBt" />
         <Button onMouseClicked="#close" text="Close" />
     </HBox>

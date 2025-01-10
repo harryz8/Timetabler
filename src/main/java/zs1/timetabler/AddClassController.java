@@ -25,8 +25,11 @@ public class AddClassController {
     @FXML
     TextField className;
     @FXML ChoiceBox<Teacher> teacherChoice;
+    int toAdd;
 
-    @FXML void initialize() {
+    public void loadInCurrentValues(int toAdd) {
+        this.toAdd = toAdd;
+
         ObservableList<StringIntTuple> oi = daysOfTheWeek.getItems();
         oi.add(new StringIntTuple("Monday", 1));
         oi.add(new StringIntTuple("Tuesday", 2));
@@ -47,17 +50,69 @@ public class AddClassController {
             Query query = session.createQuery(hql);
             List<Teacher> teachers = query.getResultList();
             teacherChoice.getItems().addAll(teachers);
+            System.out.println(toAdd);
+            String hql2 = "FROM zs1.timetabler.Class cl WHERE cl.class_id = :cid";
+            Query query2 = session.createQuery(hql2);
+            query2.setParameter("cid", toAdd);
+            Class theClass = (Class) query2.getSingleResult();
+            if (theClass.getName() != null) {
+                className.setText(theClass.getName());
+            }
+            if (theClass.getTeacher() != null) {
+                teacherChoice.getSelectionModel().select(theClass.getTeacher());
+            }
+            if (theClass.getDay() != 0) {
+                for (StringIntTuple each : daysOfTheWeek.getItems()) {
+                    if (theClass.getDay() == each.getInteger()) {
+                        daysOfTheWeek.getSelectionModel().select(each);
+                        break;
+                    }
+                }
+            }
+            if (theClass.getStartTime() != null) {
+                hoursInDayStart.getSelectionModel().select(Integer.valueOf(theClass.getStartTime().getHours()));
+                minsInHourStart.getSelectionModel().select(Integer.valueOf(theClass.getStartTime().getMinutes()));
+            }
+            if (theClass.getEndTime() != null) {
+                hoursInDayEnd.getSelectionModel().select(Integer.valueOf(theClass.getEndTime().getHours()));
+                minsInHourEnd.getSelectionModel().select(Integer.valueOf(theClass.getEndTime().getMinutes()));
+            }
         }
     }
+
     @FXML void submit() {
-        Teacher teacher = teacherChoice.getSelectionModel().getSelectedItem();
         //add record
-        SessionFactory sf = DatabaseLink.setup();
-        sf.inTransaction(session2 -> session2.persist(new Class(daysOfTheWeek.getSelectionModel().getSelectedItem().getInteger(), className.getText(), teacher, Time.valueOf(LocalTime.of(hoursInDayStart.getSelectionModel().getSelectedItem(), minsInHourStart.getSelectionModel().getSelectedItem())), Time.valueOf(LocalTime.of(hoursInDayEnd.getSelectionModel().getSelectedItem(), minsInHourEnd.getSelectionModel().getSelectedItem())))));
-        cancel();
+        try (Session session = DatabaseLink.setup().openSession()) {
+            System.out.println(toAdd);
+            String hql = "FROM zs1.timetabler.Class st WHERE st.class_id = :sid";
+            Query query = session.createQuery(hql);
+            query.setParameter("sid", toAdd);
+            Class toAddClass = (Class) query.getSingleResult();
+            SessionFactory sf = DatabaseLink.setup();
+            toAddClass.setTeacher(teacherChoice.getSelectionModel().getSelectedItem());
+            toAddClass.setDay(daysOfTheWeek.getSelectionModel().getSelectedItem().getInteger());
+            toAddClass.setName(className.getText());
+            toAddClass.setStartTime(Time.valueOf(LocalTime.of(hoursInDayStart.getSelectionModel().getSelectedItem(), minsInHourStart.getSelectionModel().getSelectedItem())));
+            toAddClass.setEndTime(Time.valueOf(LocalTime.of(hoursInDayEnd.getSelectionModel().getSelectedItem(), minsInHourEnd.getSelectionModel().getSelectedItem())));
+            sf.inTransaction(session1 -> session1.update(toAddClass));
+            close();
+        }
     }
-    @FXML void cancel() {
+
+    private void close() {
         Stage stage = (Stage) daysOfTheWeek.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML public void cancel() {
+        try (Session session = DatabaseLink.setup().openSession()) {
+            System.out.println(toAdd);
+            String hql = "FROM zs1.timetabler.Class st WHERE st.class_id = :sid";
+            Query query = session.createQuery(hql);
+            query.setParameter("sid", toAdd);
+            Class toAddClass = (Class) query.getSingleResult();
+            SessionFactory sf = DatabaseLink.setup();sf.inTransaction(session1 -> session1.delete(toAddClass));
+            close();
+        }
     }
 }

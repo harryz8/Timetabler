@@ -14,6 +14,7 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.hibernate.Session;
 
@@ -109,7 +110,13 @@ public class TimetablerController {
     }
 
     @FXML public void addStudent() throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("add_student_fxml.fxml"));
+        Student newStudent = new Student();
+        SessionFactory sf = DatabaseLink.setup();
+        sf.inTransaction(session -> session.persist(newStudent));
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("add_student_fxml.fxml"));
+        Parent root = fxmlLoader.load();
+        AddStudentController addStudentController = fxmlLoader.getController();
+        addStudentController.loadInCurrentValues(newStudent.getStudent_id());
         Scene scene = new Scene(root, 500, 275);
         Stage stage = new Stage();
         stage.setTitle("Add New Student");
@@ -117,7 +124,13 @@ public class TimetablerController {
         stage.show();
     }
     @FXML public void addClass() throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("add_class_fxml.fxml"));
+        Class newClass = new Class();
+        SessionFactory sf = DatabaseLink.setup();
+        sf.inTransaction(session -> session.persist(newClass));
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("add_class_fxml.fxml"));
+        Parent root = fxmlLoader.load();
+        AddClassController addClassController = fxmlLoader.getController();
+        addClassController.loadInCurrentValues(newClass.getClass_id());
         Scene scene = new Scene(root, 500, 275);
         Stage stage = new Stage();
         stage.setTitle("Add New Class");
@@ -125,7 +138,13 @@ public class TimetablerController {
         stage.show();
     }
     @FXML public void addTeacher() throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("add_teacher_fxml.fxml"));
+        Teacher newTeacher = new Teacher();
+        SessionFactory sf = DatabaseLink.setup();
+        sf.inTransaction(session -> session.persist(newTeacher));
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("add_teacher_fxml.fxml"));
+        Parent root = fxmlLoader.load();
+        AddTeacherController addTeacherController = fxmlLoader.getController();
+        addTeacherController.loadInCurrentValues(newTeacher.getTeacher_id());
         Scene scene = new Scene(root, 500, 275);
         Stage stage = new Stage();
         stage.setTitle("Add New Teacher");
@@ -164,6 +183,15 @@ public class TimetablerController {
         Scene scene = new Scene(root, 500, 275);
         Stage stage = new Stage();
         stage.setTitle("Classes");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML public void viewStudentsInClass() throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("view_students_in_class_fxml.fxml"));
+        Scene scene = new Scene(root, 800, 275);
+        Stage stage = new Stage();
+        stage.setTitle("Enrollment");
         stage.setScene(scene);
         stage.show();
     }

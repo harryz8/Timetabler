@@ -87,6 +87,6 @@ public class Class {
         if (getTeacher() != null) {
             teacher = getTeacher().toString();
         }
-        return getName()+" Day: "+getDay()+" Start time: "+getStartTime()+" Teacher: "+teacher;
+        return getName()+" | Day: "+getDay()+" Start time: "+getStartTime()+" Teacher: "+teacher;
     }
 }
