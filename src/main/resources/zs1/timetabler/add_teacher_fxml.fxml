@@ -9,11 +9,12 @@
 <VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="zs1.timetabler.AddTeacherController"
+            stylesheets="@styles.css"
             prefHeight="400.0" prefWidth="600.0">
     <Label styleClass="Title" text="Add a Teacher" />
-    <Label text="Enter the new teacher's first name: " />
+<!--    <Label text="Enter the new teacher's first name: " />-->
     <TextField fx:id="firstName" />
-    <Label text="Enter the new teacher's surname: " />
+<!--    <Label text="Enter the new teacher's surname: " />-->
     <TextField fx:id="surname" />
     <HBox alignment="BOTTOM_RIGHT">
         <Button text="Cancel" onMouseClicked="#cancel" />

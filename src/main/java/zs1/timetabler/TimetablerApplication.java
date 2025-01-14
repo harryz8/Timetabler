@@ -13,7 +13,7 @@ public class TimetablerApplication extends Application {
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
         Parent root = FXMLLoader.load(this.getClass().getResource("timetabler_fxml.fxml"));
-        Scene scene = new Scene(root, 500, 275);
+        Scene scene = new Scene(root, 800, 400);
         stage.setTitle("Timetabler");
         stage.setScene(scene);
         stage.show();

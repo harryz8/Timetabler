@@ -2,6 +2,7 @@ package zs1.timetabler;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
@@ -13,10 +14,12 @@ import java.util.List;
 
 public class AddStudentToClassController {
     @FXML
-    ChoiceBox<Student> studentChoice;
+    ComboBox<Student> studentChoice;
     @FXML
-    ChoiceBox<Class> classChoice;
+    ComboBox<Class> classChoice;
     @FXML void initialize() {
+        studentChoice.setPromptText("Choose student");
+        classChoice.setPromptText("Choose class");
         try (Session session = DatabaseLink.setup().openSession()) {
             String hql = "FROM zs1.timetabler.Student std";
             Query query = session.createQuery(hql);

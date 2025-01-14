@@ -70,7 +70,7 @@ public class ViewClassController {
         Parent root = fxmlLoader.load();
         AddClassController addClassController = fxmlLoader.getController();
         addClassController.loadInCurrentValues(classListView.getSelectionModel().getSelectedItem().getClass_id());
-        Scene scene = new Scene(root, 500, 275);
+        Scene scene = new Scene(root, 500, 500);
         Stage stage = new Stage();
         stage.setTitle("Add New Class");
         stage.setScene(scene);

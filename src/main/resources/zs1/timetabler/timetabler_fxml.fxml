@@ -9,6 +9,7 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="zs1.timetabler.TimetablerController"
+            stylesheets="@styles.css"
             fx:id="primaryPane">
     <top>
         <MenuBar>
@@ -28,18 +29,18 @@
         </MenuBar>
     </top>
     <center>
-        <VBox>
+        <VBox styleClass="transparent">
             <Label styleClass="Title" text="Timetable Generator" />
-            <HBox>
-                <VBox>
-                <Label text="Choose a student: " />
-                <ChoiceBox fx:id="studentChoice" onAction="#findStudentTimetable" minWidth="250" />
-                </VBox>
-                <Label text=" or " />
-                <VBox>
-                <Label text="Choose a teacher: " />
-                <ChoiceBox fx:id="teacherChoice" onAction="#findTeacherTimetable" minWidth="200" />
-                </VBox>
+            <HBox styleClass="transparent">
+<!--                <VBox styleClass="transparent">-->
+<!--                    <Label text="Choose a student: " />-->
+                <ComboBox fx:id="studentChoice" onAction="#findStudentTimetable" minWidth="250" />
+<!--                </VBox>-->
+                <Label style="-fx-alignment: bottom;" text=" or " />
+<!--                <VBox styleClass="transparent">-->
+<!--                    <Label text="Choose a teacher: " />-->
+                <ComboBox fx:id="teacherChoice" onAction="#findTeacherTimetable" minWidth="200" />
+<!--                </VBox>-->
             </HBox>
             <!--    <GridPane fx:id="holder" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2" >-->
 

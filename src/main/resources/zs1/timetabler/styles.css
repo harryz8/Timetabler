@@ -1,0 +1,108 @@
+GridPane {
+    -fx-background-color: white;
+    -fx-alignment: top-center;
+}
+
+HBox {
+    -fx-background-color: white;
+    -fx-alignment: top-center;
+}
+
+VBox {
+    -fx-background-color: white;
+    -fx-alignment: top-center;
+}
+
+BorderPane {
+    -fx-background-color: white;
+}
+
+Label {
+    -fx-background-color: white;
+    -fx-font-family: "DejaVu Sans", sans-serif;
+    -fx-font-size: 14;
+}
+
+.Title {
+    -fx-font-size: 24;
+    -fx-font-weight: 700;
+}
+
+ChoiceBox {
+    -fx-font-family: Verdana, sans-serif;
+    -fx-font-size: 14;
+    -fx-border-width: 0 0 4 0;
+    -fx-border-color: linear-gradient(to right, cyan, magenta);
+    -fx-background-color: transparent, white, transparent, white;
+    -fx-text-alignment: CENTER;
+    -fx-border-insets: 10;
+    -fx-font-weight: 700;
+    -fx-text-fill: #454545;
+}
+
+TextField {
+    -fx-font-family: Verdana, sans-serif;
+    -fx-font-size: 14;
+    -fx-border-width: 0 0 4 0;
+    -fx-border-color: linear-gradient(to right, cyan, magenta);
+    -fx-background-color: transparent, white, transparent, white;
+    -fx-text-alignment: CENTER;
+    -fx-border-insets: 10;
+    -fx-font-weight: 700;
+    -fx-text-fill: #454545;
+}
+
+#timetableHolder {
+    -fx-background-color: white;
+    -fx-border-color: linear-gradient(to top left, #bcbcbc, transparent);
+    -fx-border-width: 0 4 4 0;
+    -fx-padding: 14 10 10 14;
+}
+
+Menu {
+    -fx-font-family: Verdana, sans-serif;
+    -fx-font-size: 14;
+    -fx-background-color: transparent, white, transparent, white;
+    -fx-text-alignment: CENTER;
+    -fx-border-insets: 10;
+    -fx-font-weight: 700;
+    -fx-text-fill: #454545;
+}
+
+MenuBar {
+    -fx-font-family: Verdana, sans-serif;
+    -fx-font-size: 14;
+    -fx-background-color: whitesmoke;
+    -fx-background-insets: 10;
+    -fx-border-width: 0 0 4 0;
+    -fx-border-color: linear-gradient(to bottom, dimgrey, white);
+    -fx-text-alignment: CENTER;
+    -fx-font-weight: 700;
+    -fx-text-fill: #454545;
+    -fx-border-insets: 10;
+}
+
+MenuBar HBox {
+    -fx-background-color: transparent;
+}
+
+.transparent {
+    -fx-background-color: transparent;
+}
+
+ListView {
+    -fx-font-family: Verdana, sans-serif;
+    -fx-font-size: 14;
+}
+
+ComboBox {
+    -fx-font-family: Verdana, sans-serif;
+    -fx-font-size: 14;
+    -fx-border-width: 0 0 4 0;
+    -fx-border-color: linear-gradient(to right, cyan, magenta);
+    -fx-background-color: transparent, white, transparent, white;
+    -fx-text-alignment: CENTER;
+    -fx-border-insets: 10;
+    -fx-font-weight: 700;
+    -fx-text-fill: #454545;
+}

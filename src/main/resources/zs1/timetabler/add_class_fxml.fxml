@@ -9,22 +9,25 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="zs1.timetabler.AddClassController"
+      stylesheets="@styles.css"
       prefHeight="400.0" prefWidth="600.0">
     <Label styleClass="Title" text="Add a Class" />
-    <Label text="Enter the name of the new class: " />
+<!--    <Label text="Enter the name of the new class: " />-->
     <TextField fx:id="className" />
-    <Label text="Choose the teacher for the new class: " />
-    <ChoiceBox fx:id="teacherChoice" />
-    <Label text="Choose the day of the week that this class is on: " />
-    <ChoiceBox fx:id="daysOfTheWeek" />
-    <Label text="Choose the start time for this class: " />
+<!--    <Label text="Choose the teacher for the new class: " />-->
+    <ComboBox fx:id="teacherChoice" />
+<!--    <Label text="Choose the day of the week that this class is on: " />-->
+    <ComboBox fx:id="daysOfTheWeek" />
+<!--    <Label text="Choose the start time for this class: " />-->
     <HBox alignment="CENTER">
+        <Label text="Start time: " />
         <ChoiceBox fx:id="hoursInDayStart" />
         <Label text=" : " />
         <ChoiceBox fx:id="minsInHourStart" />
     </HBox>
-    <Label text="Choose the end time for this class: " />
+<!--    <Label text="Choose the end time for this class: " />-->
     <HBox alignment="CENTER">
+        <Label text="End time" />
         <ChoiceBox fx:id="hoursInDayEnd" />
         <Label text=" : " />
         <ChoiceBox fx:id="minsInHourEnd" />

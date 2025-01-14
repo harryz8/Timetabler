@@ -9,11 +9,12 @@
 <VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="zs1.timetabler.ViewStudentsInClassController"
+            stylesheets="@styles.css"
             prefHeight="400.0" prefWidth="600.0">
     <Label styleClass="Title" text="Students in a Class" />
     <HBox>
-        <Label text="Choose class: " />
-        <ChoiceBox fx:id="classFilter" onAction="#loadStudents" />
+<!--        <Label text="Choose class: " />-->
+        <ComboBox fx:id="classFilter" onAction="#loadStudents" />
     </HBox>
     <ListView fx:id="studentsListView" />
     <HBox>

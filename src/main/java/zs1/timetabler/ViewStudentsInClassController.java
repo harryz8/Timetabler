@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -18,10 +19,11 @@ import java.util.List;
 
 public class ViewStudentsInClassController {
     @FXML ListView<Student> studentsListView;
-    @FXML ChoiceBox<Class> classFilter;
+    @FXML ComboBox<Class> classFilter;
     @FXML Button deleteBt;
 
     @FXML public void initialize() {
+        classFilter.setPromptText("Choose class");
         studentsListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {

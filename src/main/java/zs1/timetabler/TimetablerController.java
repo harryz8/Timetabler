@@ -7,10 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -27,9 +24,9 @@ public class TimetablerController {
     @FXML TextField studentName;
     @FXML Label holder;
     @FXML
-    ChoiceBox<Student> studentChoice;
+    ComboBox<Student> studentChoice;
     @FXML
-    ChoiceBox<Teacher> teacherChoice;
+    ComboBox<Teacher> teacherChoice;
     @FXML BorderPane primaryPane;
 
     private void updateChoices() {
@@ -48,6 +45,8 @@ public class TimetablerController {
     }
 
     @FXML public void initialize() {
+        studentChoice.setPromptText("Select student");
+        teacherChoice.setPromptText("Select teacher");
         updateChoices();
         studentChoice.showingProperty().addListener(new ChangeListener<Boolean>() {
             @Override
@@ -110,13 +109,10 @@ public class TimetablerController {
     }
 
     @FXML public void addStudent() throws IOException {
-        Student newStudent = new Student();
-        SessionFactory sf = DatabaseLink.setup();
-        sf.inTransaction(session -> session.persist(newStudent));
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("add_student_fxml.fxml"));
         Parent root = fxmlLoader.load();
         AddStudentController addStudentController = fxmlLoader.getController();
-        addStudentController.loadInCurrentValues(newStudent.getStudent_id());
+        addStudentController.loadInCurrentValues(-1);
         Scene scene = new Scene(root, 500, 275);
         Stage stage = new Stage();
         stage.setTitle("Add New Student");
@@ -124,27 +120,21 @@ public class TimetablerController {
         stage.show();
     }
     @FXML public void addClass() throws IOException {
-        Class newClass = new Class();
-        SessionFactory sf = DatabaseLink.setup();
-        sf.inTransaction(session -> session.persist(newClass));
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("add_class_fxml.fxml"));
         Parent root = fxmlLoader.load();
         AddClassController addClassController = fxmlLoader.getController();
-        addClassController.loadInCurrentValues(newClass.getClass_id());
-        Scene scene = new Scene(root, 500, 275);
+        addClassController.loadInCurrentValues(-1);
+        Scene scene = new Scene(root, 500, 500);
         Stage stage = new Stage();
         stage.setTitle("Add New Class");
         stage.setScene(scene);
         stage.show();
     }
     @FXML public void addTeacher() throws IOException {
-        Teacher newTeacher = new Teacher();
-        SessionFactory sf = DatabaseLink.setup();
-        sf.inTransaction(session -> session.persist(newTeacher));
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("add_teacher_fxml.fxml"));
         Parent root = fxmlLoader.load();
         AddTeacherController addTeacherController = fxmlLoader.getController();
-        addTeacherController.loadInCurrentValues(newTeacher.getTeacher_id());
+        addTeacherController.loadInCurrentValues(-1);
         Scene scene = new Scene(root, 500, 275);
         Stage stage = new Stage();
         stage.setTitle("Add New Teacher");
